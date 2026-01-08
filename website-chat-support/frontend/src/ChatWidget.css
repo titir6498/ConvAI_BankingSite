@@ -1,0 +1,107 @@
+/* ChatWidget.css */
+.chat-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  }
+  .chat-btn:hover {
+    background-color: #005bb5;
+  }
+  
+  .chat-window {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 320px;
+    height: 420px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 20px; /* More rounded edges */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .chat-header {
+    background-color: #004080;
+    color: white;
+    padding: 12px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 20px; /* Rounded top corners */
+    border-top-right-radius: 20px;
+  }
+  
+  .close-btn {
+    cursor: pointer;
+  }
+  
+  /* Ensure chat-body uses flex column for alignment */
+  .chat-body {
+    flex: 1;
+    padding: 12px;
+    overflow-y: auto;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chat-footer {
+    display: flex;
+    border-top: 1px solid #ccc;
+    border-bottom-left-radius: 20px; /* Rounded bottom corners */
+    border-bottom-right-radius: 20px;
+  }
+  .chat-footer input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    border-bottom-left-radius: 20px;
+  }
+  .chat-footer button {
+    background-color: #0073e6;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom-right-radius: 20px;
+  }
+  .chat-footer button:hover {
+    background-color: #005bb5;
+  }
+  
+  .user-msg {
+    display: inline-block;
+    background-color: #0073e6;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 18px;
+    margin: 5px 0;
+    max-width: 70%;
+    text-align: left;
+    align-self: flex-end;
+  }
+  .bot-msg {
+    display: inline-block;
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 18px;
+    margin: 5px 0;
+    max-width: 70%;
+    text-align: left;
+    align-self: flex-start;
+    font-style: italic;
+  }

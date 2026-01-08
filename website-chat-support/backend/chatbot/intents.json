@@ -1,0 +1,282 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "hello",
+        "hi",
+        "hey",
+        "good morning",
+        "good afternoon",
+        "good evening",
+        "hello there",
+        "hi there",
+        "greetings"
+      ],
+      "responses": [
+        "Hello! Welcome to SecureBank. How can I assist you with your banking needs today?",
+        "Hi there! I'm your SecureBank assistant. How can I help you manage your finances?",
+        "Greetings! Welcome to SecureBank's virtual assistant. What banking service can I help you with?",
+        "Hello! I'm here to help with your banking inquiries. How may I assist you?"
+      ]
+    },
+    {
+      "tag": "account_balance",
+      "patterns": [
+        "check balance",
+        "account balance",
+        "current balance",
+        "how much do i have",
+        "balance inquiry",
+        "check my balance",
+        "available balance",
+        "account summary"
+      ],
+      "responses": [
+        "For security reasons, I cannot display your balance here. Please log in to your online banking or mobile app to view your account balance.",
+        "To check your account balance, please sign in to your SecureBank online banking account or use our mobile app.",
+        "Account balances are available through secure channels. Please log in to your account via our website or contact phone banking for assistance."
+      ]
+    },
+    {
+      "tag": "credit_cards",
+      "patterns": [
+        "credit card",
+        "apply for credit card",
+        "card application",
+        "credit limit",
+        "card benefits",
+        "credit card rewards",
+        "annual fee",
+        "card upgrade",
+        "lost card",
+        "stolen card",
+        "report card"
+      ],
+      "responses": [
+        "We offer several credit cards with different benefits. You can apply online, visit a branch, or call our credit card department at 1-800-CARD-HELP.",
+        "To report a lost or stolen card immediately, call our 24/7 hotline: 1-888-SECURE-00. For card applications, visit our credit cards page.",
+        "Credit card benefits include cashback, travel rewards, and purchase protection. Specific details depend on your card type. Check your cardholder agreement or log in to your account."
+      ]
+    },
+    {
+      "tag": "loan_services",
+      "patterns": [
+        "apply for loan",
+        "personal loan",
+        "home loan",
+        "mortgage",
+        "car loan",
+        "education loan",
+        "loan interest rate",
+        "loan eligibility",
+        "loan calculator",
+        "loan repayment"
+      ],
+      "responses": [
+        "We offer various loan products including personal, home, auto, and education loans. You can apply online, visit any branch, or call our loan center at 1-800-LOAN-NOW.",
+        "Current interest rates vary by loan type and credit profile. Use our online loan calculator or speak with a loan officer for personalized rates.",
+        "Loan eligibility depends on income, credit score, and other factors. Start an application online for a preliminary decision or schedule a consultation with a loan specialist."
+      ]
+    },
+    {
+      "tag": "transfers_payments",
+      "patterns": [
+        "transfer money",
+        "send money",
+        "wire transfer",
+        "bill payment",
+        "pay bills",
+        "external transfer",
+        "domestic transfer",
+        "international transfer",
+        "schedule payment"
+      ],
+      "responses": [
+        "You can transfer money between your accounts, to other SecureBank customers, or to external accounts through online banking or our mobile app.",
+        "For domestic transfers, use online banking. For international wire transfers, you may need to visit a branch with proper identification.",
+        "Bill payments can be set up as one-time or recurring payments in your online banking. Most payments process within 1-2 business days."
+      ]
+    },
+    {
+      "tag": "account_services",
+      "patterns": [
+        "open account",
+        "new account",
+        "close account",
+        "account types",
+        "savings account",
+        "checking account",
+        "joint account",
+        "update information",
+        "change address",
+        "update phone"
+      ],
+      "responses": [
+        "To open a new account, you can apply online, visit any branch with identification, or call our new accounts department at 1-800-NEW-ACCT.",
+        "We offer checking, savings, money market, and certificate of deposit accounts. Compare features online or speak with a banker.",
+        "To update your personal information or close an account, please visit a branch with valid ID or call customer service during business hours."
+      ]
+    },
+    {
+      "tag": "atm_branch",
+      "patterns": [
+        "atm location",
+        "find branch",
+        "nearest atm",
+        "branch hours",
+        "atm fee",
+        "branch near me",
+        "atm withdrawal limit",
+        "deposit at atm"
+      ],
+      "responses": [
+        "You can find the nearest ATM or branch using our website's locator tool or mobile app. Most ATMs are available 24/7.",
+        "Branch hours vary by location. Typically, branches are open Monday-Friday 9AM-5PM and Saturday 9AM-1PM. Use our branch locator for specific hours.",
+        "SecureBank ATMs have no fees for customers. Withdrawal limits are $500 daily for debit cards, but you can request higher limits at a branch."
+      ]
+    },
+    {
+      "tag": "online_banking",
+      "patterns": [
+        "online banking",
+        "mobile app",
+        "digital banking",
+        "login problem",
+        "forgot password",
+        "reset password",
+        "account locked",
+        "two factor authentication",
+        "biometric login"
+      ],
+      "responses": [
+        "Our online banking and mobile app allow you to manage accounts, transfer funds, pay bills, and deposit checks remotely.",
+        "If you're having login issues, use the 'Forgot Password' link or call our technical support at 1-888-DIGITAL for assistance.",
+        "For enhanced security, we offer two-factor authentication and biometric login options. Enable these features in your security settings."
+      ]
+    },
+    {
+      "tag": "fraud_security",
+      "patterns": [
+        "fraud alert",
+        "suspicious activity",
+        "identity theft",
+        "security breach",
+        "phishing email",
+        "secure banking",
+        "data protection",
+        "report fraud",
+        "unauthorized transaction"
+      ],
+      "responses": [
+        "If you suspect fraud, call our 24/7 fraud hotline immediately: 1-888-0000-00. We'll secure your accounts and investigate any unauthorized activity.",
+        "For security, never share passwords or one-time codes. We'll never ask for this information via email or text.",
+        "Monitor your accounts regularly and set up transaction alerts. Report any suspicious emails claiming to be from SecureBank to phishing@securebank.com."
+      ]
+    },
+    {
+      "tag": "investment_services",
+      "patterns": [
+        "investments",
+        "mutual funds",
+        "retirement accounts",
+        "ira",
+        "401k",
+        "stocks",
+        "bonds",
+        "financial advisor",
+        "investment options",
+        "wealth management"
+      ],
+      "responses": [
+        "We offer investment services through SecureBank Wealth Management. Schedule a consultation with a financial advisor at 1-800-INVEST-8.",
+        "Our investment products include IRAs, mutual funds, CDs, and brokerage services. Risk levels and returns vary by product.",
+        "For retirement planning, we offer Traditional and Roth IRAs, as well as rollover services from employer plans like 401(k)s."
+      ]
+    },
+    {
+      "tag": "customer_service",
+      "patterns": [
+        "contact support",
+        "customer service",
+        "talk to representative",
+        "phone number",
+        "email support",
+        "live chat",
+        "help desk",
+        "complaint",
+        "feedback"
+      ],
+      "responses": [
+        "Our customer service is available 24/7 at 1-888-SECURE-BANK. For specific departments, visit our Contact Us page online.",
+        "You can reach us by phone, secure message in online banking, or by visiting any branch. Response times vary by channel.",
+        "For general inquiries: 1-888-SECURE-BANK. Lost/stolen cards: 1-888-SECURE-00. Fraud: 1-888-FRAUD-00. Technical support: 1-888-DIGITAL."
+      ]
+    },
+    {
+      "tag": "interest_rates",
+      "patterns": [
+        "interest rate",
+        "savings rate",
+        "cd rates",
+        "apy",
+        "mortgage rates",
+        "loan rates",
+        "current rates",
+        "rate change"
+      ],
+      "responses": [
+        "Current interest rates are updated daily on our website. Savings accounts earn 0.05% APY, 12-month CDs earn 0.50% APY (rates subject to change).",
+        "Mortgage and loan rates vary based on creditworthiness, loan amount, and term. Get a personalized rate quote by applying online.",
+        "For the most current rates on all products, visit our Rates page or speak with a banker. Rates are subject to change without notice."
+      ]
+    },
+    {
+      "tag": "statements_tax",
+      "patterns": [
+        "bank statement",
+        "monthly statement",
+        "tax documents",
+        "1099",
+        "interest statement",
+        "download statement",
+        "statement copy",
+        "transaction history"
+      ],
+      "responses": [
+        "You can view and download statements for the past 7 years in your online banking. Go to Accounts > Statements & Documents.",
+        "Tax documents like 1099-INT forms are available by January 31st each year. Download them from online banking or we'll mail them to your address on file.",
+        "For duplicate statements or archived documents not available online, visit a branch with ID or call customer service. Fees may apply for paper copies."
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "bye",
+        "goodbye",
+        "thanks",
+        "thank you",
+        "that's all",
+        "exit",
+        "no thanks",
+        "thank you goodbye",
+        "all done"
+      ],
+      "responses": [
+        "Thank you for banking with SecureBank! Stay secure and have a great day.",
+        "You're welcome! Remember to monitor your accounts regularly for security. Goodbye!",
+        "Thank you for contacting SecureBank. For 24/7 assistance, call 1-888-SECURE-BANK. Goodbye!"
+      ]
+    },
+    {
+      "tag": "fallback",
+      "patterns": [],
+      "responses": [
+        "I'm not sure about that specific banking question. For detailed assistance, please call our customer service at 1-888-SECURE-BANK or visit a branch.",
+        "For security and accuracy on that topic, I recommend speaking with a banking specialist. You can reach them at 1-888-SECURE-BANK.",
+        "I'm still learning about all our banking services. For this inquiry, please contact our customer service team for personalized assistance.",
+        "Contact admin for advanced queries. "
+      ]
+    }
+  ]
+}

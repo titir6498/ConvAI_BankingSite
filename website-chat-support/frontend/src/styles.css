@@ -1,0 +1,30 @@
+.chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .chat-toggle {
+    padding: 10px;
+  }
+  
+  .chat-box {
+    width: 300px;
+    background: #fff;
+    border: 1px solid #ccc;
+  }
+  
+  .chat-messages {
+    height: 200px;
+    overflow-y: auto;
+  }
+  
+  .user {
+    text-align: right;
+    padding: 5px;
+  }
+  
+  .bot {
+    text-align: left;
+    padding: 5px;
+  }
