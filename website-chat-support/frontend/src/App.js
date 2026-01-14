@@ -13,14 +13,22 @@ function App() {
     <Router>
       <div className="App">
         {/* Navigation Bar */}
-        <header className="navbar">
-          <h1 className="logo">MyBank</h1>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/products">Products & Services</Link>
-            <Link to="/about">About Us</Link>
-            <Link to="/login">Login</Link>
-          </nav>
+        <header className="app-header">
+          <div className="header-content">
+            <div className="logo-section">
+              <div className="bank-logo">🏦</div>
+              <h1>SecureBank</h1>
+              <span className="tagline">Trusted Banking Since 1950</span>
+            </div>
+            {/*<div className="main-nav">*/}
+              <nav className="main-nav">
+                <Link to="/" className="nav-link active">Home</Link>
+                <Link to="/products" className="nav-link">Products & Services</Link>
+                <Link to="/about" className="nav-link">About Us</Link>
+                <Link to="/login" className="login-btn">Login</Link>
+              </nav>
+            {/*</div>*/}
+          </div>
         </header>
 
         {/* Page Routes */}
@@ -32,22 +40,51 @@ function App() {
         </Routes>
 
         {/* Features Section */}
-        <div className="features">
-            <div className="feature-card">
+        <div className="services-grid">
+            <div className="service-card">
             <h3>Secure Banking</h3>
             <p>We prioritize your safety with top-notch security systems.</p>
             </div>
-            <div className="feature-card">
+            <div className="service-card">
             <h3>Easy Loans</h3>
             <p>Quick approvals and flexible repayment options.</p>
             </div>
-            <div className="feature-card">
+            <div className="service-card">
             <h3>24/7 Support</h3>
             <p>Our customer service team is always here to help.</p>
             </div>
         </div>
         {/* Chat Widget available everywhere */}
         <ChatWidget />
+
+        <footer className="app-footer">
+          <div className="footer-content">
+            <div className="footer-section">
+              <h4>Contact Us</h4>
+              <p>📞 1-888-SECURE-BANK</p>
+              <p>📧 support@securebank.com</p>
+              <p>🕒 24/7 Customer Service</p>
+            </div>
+            <div className="footer-section">
+              <h4>Quick Links</h4>
+              <a href="/security">Security Center</a>
+              <a href="/rates">Interest Rates</a>
+              <a href="/locations">Branch Locator</a>
+              <a href="/careers">Careers</a>
+            </div>
+            <div className="footer-section">
+              <h4>Legal</h4>
+              <a href="/privacy">Privacy Policy</a>
+              <a href="/terms">Terms of Service</a>
+              <a href="/disclosures">Disclosures</a>
+              <a href="/compliance">Compliance</a>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <p>© 2024 SecureBank. Member FDIC. Equal Housing Lender. All rights reserved.</p>
+            <p className="security-note">🔒 Your security is our priority. We use 256-bit encryption to protect your information.</p>
+          </div>
+      </footer>
       </div>
     </Router>
   );
