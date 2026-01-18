@@ -1,5 +1,6 @@
 // Home.js
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -9,8 +10,12 @@ function Home() {
             <h2>Your Financial Security is Our Priority</h2>
             <p>Experience banking that puts your security first with 24/7 protection and dedicated support.</p>
             <div className="cta-buttons">
-              <button className="cta-primary">Open an Account</button>
-              <button className="cta-secondary">Apply for Loan</button>
+              <Link to="/openaccount">
+                <button className="cta-primary">Open an Account</button>
+              </Link>
+              <Link to="/loanapply">
+                <button className="cta-secondary">Apply for Loan</button>
+              </Link>
             </div>
           </div>
           <div className="hero-image">

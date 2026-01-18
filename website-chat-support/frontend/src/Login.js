@@ -20,6 +20,9 @@ function Login() {
       <p>
         Don’t have an account? <Link to="/signup">Sign up here</Link>
       </p>
+      <p>
+        <Link to="/forgotpassword">Forgot your password?</Link>
+      </p>
     </section>
   );
 }

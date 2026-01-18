@@ -3,7 +3,7 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #0073e6;
+    background-color: #004080;
     color: white;
     border: none;
     padding: 15px 20px;
@@ -71,7 +71,7 @@
     border-bottom-left-radius: 20px;
   }
   .chat-footer button {
-    background-color: #0073e6;
+    background-color: #0358ae;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -84,7 +84,7 @@
   
   .user-msg {
     display: inline-block;
-    background-color: #0073e6;
+    background-color: #0562bf;
     color: white;
     padding: 8px 12px;
     border-radius: 18px;

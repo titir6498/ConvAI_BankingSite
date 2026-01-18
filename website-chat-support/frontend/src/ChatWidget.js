@@ -44,7 +44,7 @@ function ChatWidget() {
           <div className="chat-body">
             {messages.map((msg, i) => (
               <p key={i} className={msg.sender === "user" ? "user-msg" : "bot-msg"}>
-                {msg.sender === "user" ? "You: " : "Bot: "}
+                {/* {msg.sender === "user" ? "You: " : "Bot: "} */}
                 {msg.text}
               </p>
             ))}

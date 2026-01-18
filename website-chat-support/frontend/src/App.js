@@ -1,12 +1,16 @@
 // App.js
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import "./App.css";
 import ChatWidget from "./ChatWidget";
 import Home from "./Home";
 import Contact from "./Contact";
 import Login from "./Login";
 import Signup from "./Signup";
+import ProductsServices from "./ProductsServices";
+import LoanApplication from "./LoanApplication";
+import OpenAccount from "./OpenAccount";
+import About from "./About";
 
 function App() {
   return (
@@ -22,10 +26,10 @@ function App() {
             </div>
             {/*<div className="main-nav">*/}
               <nav className="main-nav">
-                <Link to="/" className="nav-link active">Home</Link>
-                <Link to="/products" className="nav-link">Products & Services</Link>
-                <Link to="/about" className="nav-link">About Us</Link>
-                <Link to="/login" className="login-btn">Login</Link>
+                <NavLink to="/" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Home</NavLink>
+                <NavLink to="/products" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Products & Services</NavLink>
+                <NavLink to="/about" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>About Us</NavLink>
+                <NavLink to="/login" className={({ isActive }) => isActive ? "login-btn active" : "login-btn"}>Login</NavLink>
               </nav>
             {/*</div>*/}
           </div>
@@ -37,6 +41,11 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/products" element={<ProductsServices />} />
+          <Route path="/loanapply" element={<LoanApplication />} />
+          <Route path="/openaccount" element={<OpenAccount />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/forgotpassword" element={ <div><h1>Reset Password</h1><p>You have reached the password reset page. </p></div>} />
         </Routes>
 
         {/* Features Section */}

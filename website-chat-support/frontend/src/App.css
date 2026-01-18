@@ -80,16 +80,19 @@ body {
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 4px;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
   position: relative;
 }
 
 .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
 }
 
 .nav-link.active {
-  background-color: rgba(189, 232, 245, 0.2);
+  background-color: rgba(189, 232, 245, 0.35);
+  border-bottom: 3px solid #BDE8F5;
+  box-shadow: 0 2px 8px rgba(189, 232, 245, 0.3);
 }
 
 .login-btn {
@@ -101,11 +104,19 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .login-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(73, 136, 196, 0.3);
+}
+
+.login-btn.active {
+  background: linear-gradient(135deg, #3A7AB0 0%, #0F2854 100%);
+  box-shadow: 0 6px 16px rgba(73, 136, 196, 0.4);
+  transform: translateY(-2px);
 }
 
 /* Hero Section */
@@ -233,10 +244,16 @@ body {
 .services-grid {
   max-width: 1200px;
   margin: 3rem auto;
-  padding: 0 2rem;
+  padding: 3rem 2rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
+  gap: 4rem;
+  background: linear-gradient(135deg, #041c3d 0%, #e9f2f5 100%);
+  /* background: linear-gradient(135deg, #F5F7FA 0%, #E8F0F8 100%); */
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .service-card {
@@ -460,6 +477,32 @@ body {
   }
 }
 
+/* Products & Services Page */
+.products-container {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+}
+
+.products-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.products-header h2 {
+  color: #0F2854;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.products-header p {
+  color: #1C4D8D;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 /* Auth Pages */
 .auth-page {
   padding: 40px;
@@ -503,4 +546,206 @@ body {
 
 .auth-page p {
   margin-top: 20px;
+}
+
+/* Products & Services Page */
+.products {
+  padding: 40px;
+  text-align: center;
+}
+
+.products h2 {
+  color: #004080;
+  margin-bottom: 10px;
+}
+
+.products p {
+  margin-bottom: 30px;
+  font-size: 1.1em;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.product-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #E1E8ED;
+  box-shadow: 0 4px 12px rgba(15, 40, 84, 0.05);
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(15, 40, 84, 0.1);
+  border-color: #4988C4;
+}
+
+.product-card h3 {
+  color: #0F2854;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.product-card p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Loan Application Page */
+.loan-page {
+  padding: 40px;
+  text-align: center;
+}
+
+.loan-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.loan-form label {
+  margin-bottom: 15px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.loan-form input,
+.loan-form select,
+.loan-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.loan-form button {
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.loan-form button:hover {
+  background-color: #005bb5;
+}
+
+.hero-buttons {
+  margin-top: 20px;
+}
+
+.loan-btn {
+  margin-left: 15px;
+  background-color: #ffcc00;
+  color: #004080;
+}
+
+.loan-btn:hover {
+  background-color: #e6b800;
+}
+
+/* Account Opening Page */
+.account-page {
+  padding: 40px;
+  text-align: center;
+}
+
+.account-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.account-form label {
+  margin-bottom: 15px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.account-form input,
+.account-form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.account-form button {
+  background-color: #0073e6;
+  color: white;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.account-form button:hover {
+  background-color: #005bb5;
+}
+
+.hero-buttons {
+  margin-top: 20px;
+}
+
+.account-btn {
+  margin-right: 15px;
+  background-color: #ffcc00;
+  color: #004080;
+}
+
+.account-btn:hover {
+  background-color: #e6b800;
+}
+
+/* About Us Page */
+.about-page {
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.about-page h2 {
+  text-align: center;
+  color: #004080;
+  margin-bottom: 20px;
+}
+
+.about-page p {
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+
+.about-section {
+  margin-bottom: 30px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.about-section h3 {
+  color: #004080;
+  margin-bottom: 10px;
+}
+
+.about-section ul {
+  list-style-type: disc;
+  padding-left: 20px;
 }

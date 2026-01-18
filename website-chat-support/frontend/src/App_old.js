@@ -23,7 +23,7 @@ function App() {
     <div className="App">
       {/* Navigation Bar */}
       <header className="navbar">
-        <h1 className="logo">MyBank</h1>
+        <h1 className="logo">SecureBank</h1>
         <nav>
           <a href="#">Home</a>
           <a href="#">Accounts</a>
@@ -34,7 +34,7 @@ function App() {
 
       {/* Hero Section */}
       <section className="hero">
-        <h2>Welcome to MyBank</h2>
+        <h2>Welcome to SecureBank</h2>
         <p>Your trusted partner in financial growth.</p>
         <button className="cta-btn">Open an Account</button>
       </section>
