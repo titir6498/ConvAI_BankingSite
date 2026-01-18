@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureBank Website - Technical Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 40px;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .toc {
+            background-color: #f9f9f9;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+
+        .toc h2 {
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .toc ol {
+            margin-left: 20px;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+        }
+
+        .toc a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        h2 {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #764ba2;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        h4 {
+            color: #555;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        code {
+            background-color: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+        }
+
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        pre code {
+            color: inherit;
+            background-color: transparent;
+            padding: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        table th {
+            background-color: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+
+        .diagram {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .highlight-danger {
+            background-color: #f8d7da;
+            border-left-color: #dc3545;
+        }
+
+        .highlight-info {
+            background-color: #d1ecf1;
+            border-left-color: #17a2b8;
+        }
+
+        .highlight-success {
+            background-color: #d4edda;
+            border-left-color: #28a745;
+        }
+
+        ul, ol {
+            margin: 15px 0;
+            margin-left: 30px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        strong {
+            color: #333;
+            font-weight: 600;
+        }
+
+        em {
+            font-style: italic;
+            color: #666;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #ddd;
+            margin: 40px 0;
+        }
+
+        footer {
+            background-color: #2d2d2d;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+            border-radius: 4px;
+        }
+
+        footer p {
+            color: inherit;
+            text-align: center;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #667eea;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            z-index: 999;
+        }
+
+        .back-to-top:hover {
+            background-color: #764ba2;
+        }
+
+        .checklist {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+
+        .checklist ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .checklist li {
+            margin-bottom: 10px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .checklist li:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .nav-bar {
+            background-color: #333;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .nav-bar a:hover {
+            background-color: #667eea;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            h3 {
+                font-size: 1.1em;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+
+            table th, table td {
+                padding: 8px;
+            }
+
+            pre {
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <a href="#overview">Overview</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#backend">Backend</a>
+        <a href="#frontend">Frontend</a>
+        <a href="#chatbot">Chatbot</a>
+        <a href="#flow">Communication</a>
+        <a href="#api">API</a>
+        <a href="#setup">Setup</a>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>🏦 SecureBank Website</h1>
+            <p>Technical Documentation - Chatbot Functionality</p>
+        </header>
+
+        <div class="section">
+            <h2 id="overview">Overview</h2>
+            <p>SecureBank is a full-stack banking website with an integrated AI-powered chatbot assistant. The application provides customers with 24/7 support for banking inquiries while maintaining security and compliance standards. This documentation focuses on the chatbot functionality and how the frontend and backend work together to deliver seamless customer service.</p>
+        </div>
+
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <ol>
+                <li><a href="#architecture">Architecture Overview</a></li>
+                <li><a href="#backend">Backend Structure</a></li>
+                <li><a href="#frontend">Frontend Structure</a></li>
+                <li><a href="#chatbot">Chatbot Functionality</a></li>
+                <li><a href="#flow">Communication Flow</a></li>
+                <li><a href="#api">API Endpoints</a></li>
+                <li><a href="#setup">Setup and Deployment</a></li>
+                <li><a href="#security">Security Considerations</a></li>
+                <li><a href="#testing">Testing & Troubleshooting</a></li>
+                <li><a href="#future">Future Enhancements</a></li>
+            </ol>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2 id="architecture">Architecture Overview</h2>
+            <p>SecureBank follows a <strong>client-server architecture</strong> with the following components:</p>
+            <div class="diagram">┌─────────────────────────────────────────────────────────────┐
+│                         FRONTEND (React)                     │
+│  ┌────────────────────────────────────────────────────────┐ │
+│  │          Chat Widget (ChatWidget.jsx)                  │ │
+│  │  - Manages UI state (open/close)                       │ │
+│  │  - Handles user input                                  │ │
+│  │  - Displays message history                            │ │
+│  │  - Sends requests to backend                           │ │
+│  └────────────────────────────────────────────────────────┘ │
+└──────────────────────┬──────────────────────────────────────┘
+                       │ HTTP POST Request
+                       │ (User Message)
+                       ↓
+┌─────────────────────────────────────────────────────────────┐
+│                    BACKEND (Express.js)                      │
+│  ┌────────────────────────────────────────────────────────┐ │
+│  │           Server (server.js)                           │ │
+│  │  - Handles /api/chat POST endpoint                     │ │
+│  │  - Validates incoming messages                         │ │
+│  │  - Routes requests to response generator               │ │
+│  └────────────────────────────────────────────────────────┘ │
+│                       │                                       │
+│                       ↓                                       │
+│  ┌────────────────────────────────────────────────────────┐ │
+│  │    Response Generator (responseGenerator.js)           │ │
+│  │  - Loads intent patterns from intents.json             │ │
+│  │  - Matches user messages to intents                    │ │
+│  │  - Selects appropriate response                        │ │
+│  └────────────────────────────────────────────────────────┘ │
+│                       │                                       │
+│                       ↓                                       │
+│  ┌────────────────────────────────────────────────────────┐ │
+│  │      Intent Configuration (intents.json)               │ │
+│  │  - Banking service patterns                            │ │
+│  │  - Response templates                                  │ │
+│  └────────────────────────────────────────────────────────┘ │
+└─────────────────────────────────────────────────────────────┘
+                       │
+                       ↑ HTTP Response
+                    (JSON with reply)</div>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2 id="backend">Backend Structure</h2>
+
+            <h3>Server Configuration (<code>server.js</code>)</h3>
+            <p>The backend is built using <strong>Express.js</strong>, a lightweight Node.js framework.</p>
+
+            <h4>Key Features:</h4>
+            <ul>
+                <li><strong>CORS Enabled</strong>: Allows cross-origin requests from the frontend</li>
+                <li><strong>JSON Parser</strong>: Handles JSON request bodies</li>
+                <li><strong>Static File Serving</strong>: Serves frontend build in production</li>
+                <li><strong>Error Handling</strong>: Comprehensive try-catch blocks for reliability</li>
+            </ul>
+
+            <h4>Main Endpoints:</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Endpoint</th>
+                        <th>Method</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>/api/health</code></td>
+                        <td>GET</td>
+                        <td>Server health check</td>
+                    </tr>
+                    <tr>
+                        <td><code>/api/chat</code></td>
+                        <td>POST</td>
+                        <td>Process user messages and return chatbot responses</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Request/Response Format:</h4>
+            <pre><code>// Request
+POST /api/chat
+{
+  "message": "check my account balance"
+}
+
+// Response
+{
+  "reply": "For security reasons, I cannot display your balance here. Please log in to your online banking or mobile app to view your account balance.",
+  "timestamp": "2024-01-16T10:30:00.000Z"
+}</code></pre>
+
+            <h4>Error Handling:</h4>
+            <ul>
+                <li>Returns 400 Bad Request for missing or invalid messages</li>
+                <li>Returns 500 Internal Server Error with user-friendly message on processing errors</li>
+            </ul>
+
+            <h3>Response Generator (<code>responseGenerator.js</code>)</h3>
+            <p>The response generator is the brain of the chatbot, implementing pattern matching and intent recognition.</p>
+
+            <h4>Workflow:</h4>
+            <div class="highlight">
+                <strong>User sends message → findIntent() looks for matching patterns → If match found, select random response → Return response → If no match, return fallback response</strong>
+            </div>
+
+            <h4>Key Functions:</h4>
+            <p><strong>findIntent(message)</strong></p>
+            <ul>
+                <li>Converts user message to lowercase</li>
+                <li>Iterates through all intents in <code>intents.json</code></li>
+                <li>For each intent, checks if message contains any of its patterns</li>
+                <li>Returns the matching intent object or <code>null</code></li>
+            </ul>
+
+            <p><strong>getResponse(userMessage)</strong></p>
+            <ul>
+                <li>Validates that message is not empty</li>
+                <li>Calls <code>findIntent()</code> to identify intent</li>
+                <li>If intent found: randomly selects from 3-4 response options (provides variety)</li>
+                <li>If no intent found: returns a fallback response</li>
+                <li>Ensures responses are contextually appropriate</li>
+            </ul>
+
+            <h3>Intent Configuration (<code>intents.json</code>)</h3>
+            <p>The intents file defines all banking knowledge the chatbot understands.</p>
+
+            <h4>Structure:</h4>
+            <pre><code>{
+  "intents": [
+    {
+      "tag": "unique_intent_id",
+      "patterns": ["pattern1", "pattern2", "pattern3"],
+      "responses": ["response1", "response2", "response3"]
+    }
+  ]
+}</code></pre>
+
+            <h4>Available Banking Intents:</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Intent Tag</th>
+                        <th>Purpose</th>
+                        <th>Example Patterns</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>greeting</code></td>
+                        <td>Welcome messages</td>
+                        <td>"hello", "hi", "good morning"</td>
+                    </tr>
+                    <tr>
+                        <td><code>account_balance</code></td>
+                        <td>Account inquiries</td>
+                        <td>"check balance", "account balance", "how much do i have"</td>
+                    </tr>
+                    <tr>
+                        <td><code>credit_cards</code></td>
+                        <td>Credit card services</td>
+                        <td>"credit card", "apply for credit card", "card benefits"</td>
+                    </tr>
+                    <tr>
+                        <td><code>loan_services</code></td>
+                        <td>Loan inquiries</td>
+                        <td>"loan", "mortgage", "personal loan", "education loan"</td>
+                    </tr>
+                    <tr>
+                        <td><code>transfers_payments</code></td>
+                        <td>Money transfers</td>
+                        <td>"transfer money", "bill payment", "wire transfer"</td>
+                    </tr>
+                    <tr>
+                        <td><code>account_services</code></td>
+                        <td>Account management</td>
+                        <td>"open account", "close account", "update information"</td>
+                    </tr>
+                    <tr>
+                        <td><code>atm_branch</code></td>
+                        <td>ATM & branch info</td>
+                        <td>"atm location", "branch hours", "nearest atm"</td>
+                    </tr>
+                    <tr>
+                        <td><code>online_banking</code></td>
+                        <td>Digital services</td>
+                        <td>"online banking", "mobile app", "login problem"</td>
+                    </tr>
+                    <tr>
+                        <td><code>fraud_security</code></td>
+                        <td>Security concerns</td>
+                        <td>"fraud alert", "suspicious activity", "phishing"</td>
+                    </tr>
+                    <tr>
+                        <td><code>investment_services</code></td>
+                        <td>Investment products</td>
+                        <td>"mutual funds", "retirement accounts", "401k"</td>
+                    </tr>
+                    <tr>
+                        <td><code>interest_rates</code></td>
+                        <td>Rate information</td>
+                        <td>"interest rate", "apy", "mortgage rates"</td>
+                    </tr>
+                    <tr>
+                        <td><code>statements_tax</code></td>
+                        <td>Documents</td>
+                        <td>"bank statement", "tax documents", "1099"</td>
+                    </tr>
+                    <tr>
+                        <td><code>customer_service</code></td>
+                        <td>Support channels</td>
+                        <td>"contact support", "customer service", "phone number"</td>
+                    </tr>
+                    <tr>
+                        <td><code>fallback</code></td>
+                        <td>Unknown queries</td>
+                        <td>(No patterns - default for unmatched)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2 id="frontend">Frontend Structure</h2>
+
+            <h3>Main Application (<code>App.js</code>)</h3>
+            <p>The React application serves as the main website container and integrates the chat widget globally.</p>
+
+            <h4>Key Components:</h4>
+            <ul>
+                <li><strong>Navigation Bar</strong>: Logo, tagline, main navigation links, login button</li>
+                <li><strong>Routes</strong>: Home, Contact, Login, Signup pages</li>
+                <li><strong>Services Grid</strong>: Highlights main banking services</li>
+                <li><strong>Chat Widget</strong>: Available on every page (floating button)</li>
+                <li><strong>Footer</strong>: Contact info, quick links, legal disclaimers, security notice</li>
+            </ul>
+
+            <h3>Chat Widget Component (<code>ChatWidget.jsx</code>)</h3>
+            <p>The Chat Widget is a floating component that provides the chatbot interface to users.</p>
+
+            <h4>Component State:</h4>
+            <pre><code>const [open, setOpen] = useState(false);        // Is chat window open?
+const [messages, setMessages] = useState([]);   // Chat message history
+const [input, setInput] = useState("");         // Current user input</code></pre>
+
+            <h4>UI Elements:</h4>
+            <ol>
+                <li><strong>Toggle Button</strong>: "Help" button in bottom-right corner</li>
+                <li><strong>Chat Box</strong>: Expands when button is clicked</li>
+                <li><strong>Message Display Area</strong>: Shows conversation history with sender differentiation</li>
+                <li><strong>Input Field</strong>: Text input for user queries</li>
+                <li><strong>Send Button</strong>: Submits message to backend</li>
+            </ol>
+
+            <h4>Key Function: sendMessage()</h4>
+            <pre><code>const sendMessage = async () => {
+  // 1. Validate input is not empty
+  if (!input.trim()) return;
+
+  // 2. Add user message to local state (immediate display)
+  const userMsg = { sender: "user", text: input };
+  setMessages([...messages, userMsg]);
+
+  // 3. Send to backend API
+  const response = await fetch("http://localhost:5000/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: input })
+  });
+
+  // 4. Parse response
+  const data = await response.json();
+
+  // 5. Add bot response to conversation
+  setMessages(prev => [...prev, { sender: "bot", text: data.reply }]);
+
+  // 6. Clear input field
+  setInput("");
+};</code></pre>
+
+            <h4>User Experience Flow:</h4>
+            <div class="highlight highlight-info">
+                User clicks "Help" button → Chat window opens → User types message → Message appears in chat → API request sent → Backend processes → Bot response appears → User can continue conversation
+            </div>
+
+            <h3>Products & Services Component (<code>ProductsServices.js</code>)</h3>
+            <p>The Products & Services page displays the banking products and services offered by SecureBank in a responsive card grid.</p>
+
+            <h4>Component Structure:</h4>
+            <pre><code>const products = [
+  {
+    icon: "💰",
+    title: "Savings Account",
+    description: "Secure your future with high-interest savings accounts..."
+  },
+  // ... more products
+];
+
+return (
+  &lt;div className="products-container"&gt;
+    &lt;div className="products-header"&gt;
+      &lt;h2&gt;Our Products & Services&lt;/h2&gt;
+      &lt;p&gt;Explore the wide range of financial solutions we offer...&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div className="product-grid"&gt;
+      {products.map((product, index) =&gt; (
+        &lt;div key={index} className="product-card"&gt;
+          &lt;div className="service-icon"&gt;{product.icon}&lt;/div&gt;
+          &lt;h3&gt;{product.title}&lt;/h3&gt;
+          &lt;p&gt;{product.description}&lt;/p&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  &lt;/div&gt;
+);</code></pre>
+
+            <h4>Products Offered:</h4>
+            <ul>
+                <li><strong>💰 Savings Account</strong> - High-interest savings with easy fund access</li>
+                <li><strong>💳 Checking Account</strong> - Daily transactions with zero hidden charges</li>
+                <li><strong>📊 Loans</strong> - Flexible personal, home, and auto loan options</li>
+                <li><strong>💎 Credit Cards</strong> - Rewards, cashback, and secure payments</li>
+                <li><strong>📈 Investment Services</strong> - Expert guidance and diverse opportunities</li>
+                <li><strong>🛡️ Insurance</strong> - Comprehensive protection plans</li>
+            </ul>
+
+            <h4>Product Card Styling:</h4>
+            <pre><code>.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.product-card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #E1E8ED;
+  box-shadow: 0 4px 12px rgba(15, 40, 84, 0.05);
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(15, 40, 84, 0.1);
+  border-color: #4988C4;
+}
+
+.product-card h3 {
+  color: #0F2854;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.product-card p {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}</code></pre>
+
+            <h4>Design Features:</h4>
+            <ul>
+                <li><strong>Responsive Grid</strong>: Auto-fit layout that adapts to screen size (minimum 280px card width)</li>
+                <li><strong>Hover Effects</strong>: Cards elevate with shadow enhancement and accent border color</li>
+                <li><strong>Icon Integration</strong>: Emoji icons for visual interest and quick recognition</li>
+                <li><strong>Consistent Typography</strong>: Matches the SecureBank design system throughout</li>
+                <li><strong>Professional Spacing</strong>: 2rem gaps and padding for proper visual hierarchy</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2 id="chatbot">Chatbot Functionality</h2>
+
+            <h3>How the Chatbot Understands User Intent</h3>
+            <p>The chatbot uses <strong>keyword pattern matching</strong> to understand user queries. This is a rule-based approach rather than machine learning, making it lightweight and predictable.</p>
+
+            <h4>Example Matching Process:</h4>
+            <pre><code>User Input: "Can I transfer money to another account?"
+               ↓
+         Normalize to lowercase
+               ↓
+     Check against all intent patterns
+               ↓
+   Found match: "transfer money" in transfers_payments intent
+               ↓
+    Return random response from transfers_payments responses</code></pre>
+
+            <h3>Response Selection Strategy</h3>
+            <p>The chatbot maintains conversation variety through <strong>randomized response selection</strong>:</p>
+            <pre><code>const randomIndex = Math.floor(Math.random() * responses.length);
+return responses[randomIndex];</code></pre>
+
+            <h4>Benefits:</h4>
+            <ul>
+                <li>Conversations feel natural and less scripted</li>
+                <li>Users experience different helpful information</li>
+                <li>Prevents boredom from repetitive answers</li>
+            </ul>
+
+            <h3>Fallback Mechanism</h3>
+            <p>For queries the chatbot doesn't recognize, it provides helpful fallback responses:</p>
+            <div class="highlight highlight-success">
+                For unknown queries, the chatbot directs users to contact human support while maintaining a helpful and professional tone.
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2 id="flow">Communication Flow</h2>
+
+            <h3>Complete Request-Response Cycle</h3>
+
+            <h4>Step 1: User Interaction (Frontend)</h4>
+            <ul>
+                <li>User types message in Chat Widget</li>
+                <li>Presses Send button</li>
+                <li>React component creates message object</li>
+            </ul>
+
+            <h4>Step 2: API Request (Frontend → Backend)</h4>
+            <pre><code>POST http://localhost:5000/api/chat
+Content-Type: application/json
+
+{
+  "message": "how do i apply for a loan?"
+}</code></pre>
+
+            <h4>Step 3: Backend Processing</h4>
+            <ol>
+                <li>Express server receives request</li>
+                <li>Validates message field exists and is string</li>
+                <li>Calls <code>responseGenerator.getResponse(message)</code></li>
+                <li>Response generator:
+                    <ul>
+                        <li>Checks if message is empty → return prompt</li>
+                        <li>Calls findIntent() to match patterns</li>
+                        <li>If match found → select random response</li>
+                        <li>If no match → return fallback response</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h4>Step 4: API Response (Backend → Frontend)</h4>
+            <pre><code>HTTP 200 OK
+Content-Type: application/json
+
+{
+  "reply": "We offer various loan products including personal, home, auto, and education loans. You can apply online, visit any branch, or call our loan center at 1-800-LOAN-NOW.",
+  "timestamp": "2024-01-16T10:30:45.123Z"
+}</code></pre>
+
+            <h4>Step 5: Display Response (Frontend)</h4>
+            <ul>
+                <li>React receives response data</li>
+                <li>Adds bot message to state</li>
+                <li>Component re-renders with new message</li>
+                <li>User sees bot reply in chat window</li>
+            </ul>
+
+            <h4>Timing:</h4>
+            <ul>
+                <li>Typical request latency: 50-200ms (local network)</li>
+                <li>Production latency: 200-500ms (internet latency added)</li>
+                <li>User perceives immediate response (async handling)</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2 id="api">API Endpoints</h2>
+
+            <h3>Health Check Endpoint</h3>
+            <p><strong>Purpose:</strong> Verify backend is running and healthy</p>
+            <pre><code>GET /api/health
+
+Response (200 OK):
+{
+  "status": "OK",
+  "message": "Chat server is running"
+}</code></pre>
+
+            <h3>Chat Endpoint</h3>
+            <p><strong>Purpose:</strong> Process user messages and return chatbot responses</p>
+
+            <h4>Request:</h4>
+            <pre><code>POST /api/chat
+Content-Type: application/json
+
+{
+  "message": "string"  // User's query (required)
+}</code></pre>
+
+            <h4>Success Response (200 OK):</h4>
+            <pre><code>{
+  "reply": "Bot's response text",
+  "timestamp": "2024-01-16T10:30:00.000Z"
+}</code></pre>
+
+            <h4>Error Responses:</h4>
+            <pre><code>400 Bad Request:
+{
+  "error": "Invalid request. Message is required."
+}
+
+500 Internal Server Error:
+{
+  "response": "Sorry, I encountered an error. Please try again or contact admin for advanced queries."
+}</code></pre>
+
+            <h4>Input Validation:</h4>
+            <ul>
+                <li>Message must be a string</li>
+                <li>Message must be present in request body</li>
+                <li>Empty strings are accepted but prompted to ask for input</li>
+            </ul>
+
+            <h4>Output Guarantees:</h4>
+            <ul>
+                <li>Always returns valid JSON</li>
+                <li>Always includes timestamp in success responses</li>
+                <li>Always returns appropriate HTTP status codes</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2 id="setup">Setup and Deployment</h2>
+
+            <h3>Prerequisites</h3>
+            <ul>
+                <li><strong>Node.js</strong> (v14 or higher)</li>
+                <li><strong>npm</strong> (included with Node.js)</li>
+                <li><strong>Git</strong> (for version control)</li>
+            </ul>
+
+            <h3>Backend Setup</h3>
+            <pre><code># Navigate to backend directory
+cd backend
+
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+# Server runs on http://localhost:5000
+
+# Or with auto-reload during development
+npm install --save-dev nodemon
+npx nodemon server.js</code></pre>
+
+            <h4>Dependencies:</h4>
+            <ul>
+                <li><code>express</code>: Web framework</li>
+                <li><code>cors</code>: Cross-Origin Resource Sharing</li>
+                <li><code>path</code>: File path utilities (Node built-in)</li>
+            </ul>
+
+            <h3>Frontend Setup</h3>
+            <pre><code># Navigate to frontend directory
+cd frontend
+
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+# Opens http://localhost:3000 automatically
+
+# Build for production
+npm run build
+# Creates optimized build in frontend/build directory</code></pre>
+
+            <h4>Dependencies:</h4>
+            <ul>
+                <li><code>react</code>: UI library</li>
+                <li><code>react-router-dom</code>: Client-side routing</li>
+                <li><code>react-dom</code>: DOM rendering</li>
+            </ul>
+
+            <h3>Production Deployment</h3>
+            <h4>Combined Server Approach:</h4>
+            <pre><code># From root directory
+
+# Build frontend
+cd frontend
+npm run build
+cd ..
+
+# Backend serves frontend
+# In server.js, production mode will serve static files:
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+  // Serve index.html for all routes
+}
+
+# Start backend
+cd backend
+NODE_ENV=production npm start</code></pre>
+
+            <h4>Deployment Checklist:</h4>
+            <div class="checklist">
+                <ul>
+                    <li>Set NODE_ENV=production</li>
+                    <li>Build React app: npm run build</li>
+                    <li>Ensure backend serves frontend static files</li>
+                    <li>Configure appropriate PORT (e.g., 5000)</li>
+                    <li>Test all chat endpoints</li>
+                    <li>Update API endpoints in ChatWidget (production URL)</li>
+                    <li>Enable HTTPS in production</li>
+                    <li>Configure security headers</li>
+                </ul>
+            </div>
+
+            <h3>Configuration</h3>
+
+            <h4>Frontend API URL:</h4>
+            <p>In <code>ChatWidget.jsx</code>, update the fetch URL for production:</p>
+            <pre><code>// Development
+const response = await fetch("http://localhost:5000/api/chat", { ... });
+
+// Production (update this)
+const response = await fetch("https://api.yourdomain.com/chat", { ... });
+// OR
+const response = await fetch("/api/chat", { ... }); // If serving from same domain</code></pre>
+
+            <h4>Backend CORS Configuration:</h4>
+            <p>For production, restrict to specific domains:</p>
+            <pre><code>app.use(cors({
+  origin: 'https://yourdomain.com',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type']
+}));</code></pre>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2 id="security">Security Considerations</h2>
+
+            <h3>Data Security</h3>
+            <ul>
+                <li>User messages are not stored by the chatbot</li>
+                <li>No sensitive data should be entered in chat (passwords, card numbers)</li>
+                <li>Chat responses direct users to secure channels for sensitive operations</li>
+                <li>HTTPS should be used in production</li>
+            </ul>
+
+            <h3>Input Validation</h3>
+            <ul>
+                <li>Backend validates message exists and is string</li>
+                <li>Empty messages are rejected</li>
+                <li>Messages are trimmed of whitespace</li>
+                <li>XSS protection through React's automatic escaping</li>
+            </ul>
+
+            <h3>Rate Limiting</h3>
+            <p>Consider implementing rate limiting in production:</p>
+            <pre><code>const rateLimit = require('express-rate-limit');
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100 // limit each IP to 100 requests per windowMs
+});
+
+app.post('/api/chat', limiter, (req, res) => {
+  // ... handle request
+});</code></pre>
+
+            <h3>CORS in Production</h3>
+            <ul>
+                <li>Enable only specific origins</li>
+                <li>Restrict HTTP methods to POST for chat endpoint</li>
+                <li>Use credentials option carefully</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2>Adding New Intents</h2>
+
+            <p>To expand chatbot capabilities, add new intents to <code>intents.json</code>:</p>
+
+            <pre><code>{
+  "tag": "my_new_intent",
+  "patterns": [
+    "pattern1",
+    "pattern2",
+    "pattern3",
+    "pattern4"
+  ],
+  "responses": [
+    "First possible response",
+    "Second possible response",
+    "Third possible response"
+  ]
+}</code></pre>
+
+            <h4>Guidelines:</h4>
+            <ul>
+                <li>Use lowercase patterns with no special characters</li>
+                <li>Include 3-4 common ways users might ask the question</li>
+                <li>Provide 2-4 varied responses</li>
+                <li>Use natural language, not robotic responses</li>
+                <li>Direct to human support for complex topics</li>
+                <li>Include relevant contact information in responses</li>
+            </ul>
+
+            <h4>Example Addition:</h4>
+            <pre><code>{
+  "tag": "debit_cards",
+  "patterns": [
+    "debit card",
+    "request debit card",
+    "card replacement",
+    "debit card lost",
+    "debit card decline",
+    "card not working"
+  ],
+  "responses": [
+    "We can order a replacement debit card at any branch or through online banking. It typically arrives in 5-7 business days.",
+    "For immediate card access, request an expedited card. For card declines, please verify funds or contact us at 1-888-SECURE-BANK.",
+    "To order or replace a debit card, visit a branch, call 1-888-SECURE-BANK, or use the Cards section in online banking."
+  ]
+}</code></pre>
+
+            <p><strong>After adding:</strong> Restart backend server and test by typing matching patterns in chat widget.</p>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2 id="testing">Testing & Troubleshooting</h2>
+
+            <h3>Manual Testing Examples</h3>
+            <pre><code>Input: "How do I apply for a loan?"
+Expected: Loan services response
+
+Input: "Hi there!"
+Expected: Greeting response
+
+Input: "Help me with something weird"
+Expected: Fallback response directing to customer service
+
+Input: "hello how are you"
+Expected: Should match "hello" pattern in greeting intent
+
+Input: "" (empty)
+Expected: "Please type your question or select an option above."</code></pre>
+
+            <h3>Testing Checklist</h3>
+            <div class="checklist">
+                <ul>
+                    <li>All intents return responses</li>
+                    <li>Fallback response works for unknown queries</li>
+                    <li>Empty message handling works</li>
+                    <li>API returns proper HTTP status codes</li>
+                    <li>Response includes timestamp</li>
+                    <li>Multiple responses per intent return variety</li>
+                    <li>Chat widget displays messages correctly</li>
+                    <li>Backend and frontend are properly connected</li>
+                    <li>CORS doesn't block requests</li>
+                    <li>Error responses are user-friendly</li>
+                </ul>
+            </div>
+
+            <h3>Common Issues</h3>
+
+            <h4>404 error when accessing /api/chat</h4>
+            <ul>
+                <li>Ensure backend server is running on correct port</li>
+                <li>Check that URL in ChatWidget matches backend URL</li>
+                <li>Verify express routes are properly configured</li>
+            </ul>
+
+            <h4>Chat widget not appearing</h4>
+            <ul>
+                <li>Check that ChatWidget component is imported in App.js</li>
+                <li>Verify component is rendered in JSX</li>
+                <li>Check browser console for JavaScript errors</li>
+                <li>Ensure CSS is properly loaded</li>
+            </ul>
+
+            <h4>CORS errors in browser console</h4>
+            <ul>
+                <li>Verify <code>cors</code> package is installed in backend</li>
+                <li>Check <code>app.use(cors())</code> is before route handlers</li>
+                <li>In production, configure CORS to allow frontend domain</li>
+            </ul>
+
+            <h4>No response from chatbot</h4>
+            <ul>
+                <li>Verify backend server is running</li>
+                <li>Check network tab in browser DevTools</li>
+                <li>Ensure POST request has proper JSON format</li>
+                <li>Look for errors in backend console</li>
+            </ul>
+
+            <h4>Messages sent but no response appears</h4>
+            <ul>
+                <li>Check browser console for fetch errors</li>
+                <li>Verify API endpoint URL is correct</li>
+                <li>Ensure message field in request body</li>
+                <li>Test API directly with curl or Postman</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2 id="future">Future Enhancements</h2>
+
+            <h3>Potential Improvements</h3>
+
+            <h4>1. Natural Language Processing</h4>
+            <ul>
+                <li>Implement NLP library like compromise.js</li>
+                <li>Support fuzzy matching for typos</li>
+                <li>Improve understanding of complex queries</li>
+            </ul>
+
+            <h4>2. Machine Learning Integration</h4>
+            <ul>
+                <li>Train model on banking FAQs</li>
+                <li>Implement confidence scoring</li>
+                <li>Learn from user interactions</li>
+            </ul>
+
+            <h4>3. Database Integration</h4>
+            <ul>
+                <li>Store chat history</li>
+                <li>Analytics on common questions</li>
+                <li>User session management</li>
+            </ul>
+
+            <h4>4. Advanced Features</h4>
+            <ul>
+                <li>Multi-language support</li>
+                <li>Sentiment analysis</li>
+                <li>Escalation to human agents</li>
+                <li>Personalized responses based on user data</li>
+            </ul>
+
+            <h4>5. UI Improvements</h4>
+            <ul>
+                <li>Suggestion buttons for common questions</li>
+                <li>Typing indicators</li>
+                <li>Conversation ratings</li>
+                <li>Chat history export</li>
+            </ul>
+
+            <h4>6. Integration with Banking Systems</h4>
+            <ul>
+                <li>Real-time account information</li>
+                <li>Transaction processing through chat</li>
+                <li>Secure authentication for account access</li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <div class="section">
+            <h2>Conclusion</h2>
+            <p>The SecureBank chatbot provides a scalable, maintainable solution for 24/7 customer support. The modular architecture allows for easy expansion of banking intents while maintaining code clarity. The pattern-matching approach ensures predictable, reliable responses without complex machine learning infrastructure.</p>
+
+            <p>The separation of concerns—frontend UI handling, backend API processing, and centralized intent configuration—makes the system easy to understand, test, and enhance over time.</p>
+
+            <p>For questions or further development, refer to the code comments and the structure outlined in this documentation.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>Documentation Version:</strong> 1.0</p>
+        <p><strong>Last Updated:</strong> January 16, 2026</p>
+        <p><strong>Applicable to:</strong> Website Chat Support v1.0</p>
+        <p>© 2024 SecureBank. All rights reserved.</p>
+    </footer>
+
+    <a href="#top" class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">↑</a>
+
+    <script>
+        // Show/hide back to top button
+        window.addEventListener('scroll', function() {
+            const button = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                button.style.display = 'flex';
+            } else {
+                button.style.display = 'none';
+            }
+        });
+
+        // Smooth scroll for table of contents links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
