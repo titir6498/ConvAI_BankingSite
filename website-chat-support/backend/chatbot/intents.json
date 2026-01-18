@@ -1,26 +1,6 @@
 {
   "intents": [
     {
-      "tag": "greeting",
-      "patterns": [
-        "hello",
-        "hi",
-        "hey",
-        "good morning",
-        "good afternoon",
-        "good evening",
-        "hello there",
-        "hi there",
-        "greetings"
-      ],
-      "responses": [
-        "Hello! Welcome to SecureBank. How can I assist you with your banking needs today?",
-        "Hi there! I'm your SecureBank assistant. How can I help you manage your finances?",
-        "Greetings! Welcome to SecureBank's virtual assistant. What banking service can I help you with?",
-        "Hello! I'm here to help with your banking inquiries. How may I assist you?"
-      ]
-    },
-    {
       "tag": "account_balance",
       "patterns": [
         "check balance",
@@ -60,9 +40,49 @@
       ]
     },
     {
-      "tag": "loan_services",
+      "tag": "loan_application",
       "patterns": [
-        "apply for loan",
+        "apply for a loan",
+        "loan application",
+        "start loan application",
+        "loan form",
+        "loan process",
+        "how to apply for loan"
+      ],
+      "responses": [
+        "To apply for a loan, please visit our loan application page on the website.",
+        "You can apply for a loan by clicking the 'Apply for Loan' button on our homepage.",
+        "Our loan application process is simple and can be completed online. Just follow the instructions on the loan application page."
+      ]
+    },
+    {
+      "tag": "general_inquiries",
+      "patterns": [
+        "products",
+        "services",
+        "general", 
+        "offer",
+        "what services do you offer",
+        "banking services",
+        "help",
+        "support",
+        "information",
+        "bank hours",
+        "location",
+        "customer support"
+      ],
+      "responses": [
+        "We offer a variety of banking services including checking and savings accounts, loans, credit cards, investment services, and online banking.",
+        "What product or service do you need help with?"
+      ]
+    },
+    {
+      "tag": "loan_inquiries",
+      "patterns": [
+        "loan",
+        "loans",
+        "loan types",
+        "types of loans",
         "personal loan",
         "home loan",
         "mortgage",
@@ -137,26 +157,46 @@
       ]
     },
     {
+      "tag": "login",
+      "patterns": [
+        "login",
+        "log in",
+        "sign in",
+        "account login",
+        "login issue",
+        "login problem",
+        "incorrect username",
+        "incorrect password",
+        "reset password",
+        "password is incorrect",
+        "forgotten",
+        "forgot"
+      ],
+      "responses": [
+        "You can log in to your online banking account using your username and password. If you're having trouble logging in, try resetting your password or contacting customer service.",
+        "If you're having trouble logging in, make sure you're using the correct username and password. You can reset your password using the 'Forgot Password' link on the login page.",
+        "If you're having login issues, use the 'Forgot Password' link or call our technical support at 1-888-DIGITAL for assistance.",
+        "To reset your password, click on the 'Forgot Password' link on the login page and follow the instructions."
+      ]
+    },
+    {
       "tag": "online_banking",
       "patterns": [
         "online banking",
         "mobile app",
         "digital banking",
-        "login problem",
         "forgot password",
-        "reset password",
         "account locked",
         "two factor authentication",
         "biometric login"
       ],
       "responses": [
         "Our online banking and mobile app allow you to manage accounts, transfer funds, pay bills, and deposit checks remotely.",
-        "If you're having login issues, use the 'Forgot Password' link or call our technical support at 1-888-DIGITAL for assistance.",
         "For enhanced security, we offer two-factor authentication and biometric login options. Enable these features in your security settings."
       ]
     },
     {
-      "tag": "fraud_security",
+      "tag": "security",
       "patterns": [
         "fraud alert",
         "suspicious activity",
@@ -166,7 +206,8 @@
         "secure banking",
         "data protection",
         "report fraud",
-        "unauthorized transaction"
+        "unauthorized transaction",
+        "hotlist"
       ],
       "responses": [
         "If you suspect fraud, call our 24/7 fraud hotline immediately: 1-888-0000-00. We'll secure your accounts and investigate any unauthorized activity.",
@@ -252,6 +293,7 @@
     {
       "tag": "goodbye",
       "patterns": [
+        "okay",
         "bye",
         "goodbye",
         "thanks",
@@ -263,9 +305,44 @@
         "all done"
       ],
       "responses": [
+        "Happy to be of assistance!",
         "Thank you for banking with SecureBank! Stay secure and have a great day.",
         "You're welcome! Remember to monitor your accounts regularly for security. Goodbye!",
         "Thank you for contacting SecureBank. For 24/7 assistance, call 1-888-SECURE-BANK. Goodbye!"
+      ]
+    },
+    {
+      "tag": "login",
+      "patterns": [
+        "login",
+        "log in",
+        "register",
+        "sign up",
+        "sign in"
+      ],
+      "responses": [
+        "To login, click on the login button at the top right.",
+        "Use the login button at the top of the page to proceed."
+      ]
+    },
+    {
+      "tag": "greeting",
+      "patterns": [
+        "hello",
+        "hi",
+        "hey",
+        "good morning",
+        "good afternoon",
+        "good evening",
+        "hello there",
+        "hi there",
+        "greetings"
+      ],
+      "responses": [
+        "Hello! Welcome to SecureBank. How can I assist you with your banking needs today?",
+        "Hi there! I'm your SecureBank assistant. How can I help you manage your finances?",
+        "Greetings! Welcome to SecureBank's virtual assistant. What banking service can I help you with?",
+        "Hello! I'm here to help with your banking inquiries. How may I assist you?"
       ]
     },
     {
