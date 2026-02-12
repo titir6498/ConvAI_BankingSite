@@ -105,3 +105,91 @@
     align-self: flex-start;
     font-style: italic;
   }
+
+  /* Emotion-aware styling */
+  .emotion-tag {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 8px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-style: italic;
+  }
+
+  .suggested-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .action-btn {
+    padding: 6px 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+  }
+
+  .action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  }
+
+  .voice-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+  }
+
+  .voice-btn.listening {
+    background: #FF5722;
+    animation: pulse 1s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  .emotion-indicator {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+
+  .emotion-happy {
+    background-color: #c8e6c9;
+    color: #2e7d32;
+  }
+
+  .emotion-sad {
+    background-color: #bbdefb;
+    color: #1565c0;
+  }
+
+  .emotion-angry {
+    background-color: #ffcdd2;
+    color: #c62828;
+  }
+
+  .emotion-frustrated {
+    background-color: #ffe0b2;
+    color: #e65100;
+  }
+
+  .emotion-neutral {
+    background-color: #e0e0e0;
+    color: #424242;
+  }

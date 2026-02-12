@@ -1,6 +1,13 @@
 {
   "intents": [
     {
+      "tag": "greeting",
+      "patterns": ["hello", "hi", "hey", "good morning", "good afternoon", "greetings"],
+      "responses": ["Hello! How can I assist you today?", "Hi there! What can I help you with?", "Welcome! How may I help you?"],
+      "emotion": "neutral",
+      "empathetic": false
+    },
+    {
       "tag": "account_balance",
       "patterns": [
         "check balance",
@@ -16,7 +23,25 @@
         "For security reasons, I cannot display your balance here. Please log in to your online banking or mobile app to view your account balance.",
         "To check your account balance, please sign in to your SecureBank online banking account or use our mobile app.",
         "Account balances are available through secure channels. Please log in to your account via our website or contact phone banking for assistance."
-      ]
+      ],
+      "emotion": "neutral",
+      "empathetic": false
+    },
+    {
+      "tag": "account_issue_frustrated",
+      "patterns": ["can't access account", "locked out", "not working", "broken", "terrible", "useless", "frustrated"],
+      "responses": ["Let me help you regain access right away. We'll get this resolved quickly for you."],
+      "emotion": "frustrated",
+      "empathetic": true,
+      "escalate": false
+    },
+    {
+      "tag": "account_issue_sad",
+      "patterns": ["lost access", "worried", "concerned", "stressed", "anxious"],
+      "responses": ["Don't worry, we'll resolve this together. I'll guide you through the recovery process step by step."],
+      "emotion": "sad",
+      "empathetic": true,
+      "escalate": false
     },
     {
       "tag": "credit_cards",
@@ -37,7 +62,9 @@
         "We offer several credit cards with different benefits. You can apply online, visit a branch, or call our credit card department at 1-800-CARD-HELP.",
         "To report a lost or stolen card immediately, call our 24/7 hotline: 1-888-SECURE-00. For card applications, visit our credit cards page.",
         "Credit card benefits include cashback, travel rewards, and purchase protection. Specific details depend on your card type. Check your cardholder agreement or log in to your account."
-      ]
+      ],
+      "emotion": "neutral",
+      "empathetic": false
     },
     {
       "tag": "loan_application",
@@ -53,7 +80,24 @@
         "To apply for a loan, please visit our loan application page on the website.",
         "You can apply for a loan by clicking the 'Apply for Loan' button on our homepage.",
         "Our loan application process is simple and can be completed online. Just follow the instructions on the loan application page."
-      ]
+      ],
+      "emotion": "neutral",
+      "empathetic": false
+    },
+    {
+      "tag": "loan_inquiry_happy",
+      "patterns": ["excited about loan", "great offer", "interested", "wonderful", "amazing"],
+      "responses": ["That's wonderful! I'm excited to help you explore our loan options. Let me show you the best options for you."],
+      "emotion": "happy",
+      "empathetic": true
+    },
+    {
+      "tag": "complaint_angry",
+      "patterns": ["angry", "furious", "unacceptable", "disgusting", "worst", "hate"],
+      "responses": ["I sincerely apologize for your experience. Your concerns are important to us."],
+      "emotion": "angry",
+      "empathetic": true,
+      "escalate": true
     },
     {
       "tag": "general_inquiries",
@@ -74,7 +118,9 @@
       "responses": [
         "We offer a variety of banking services including checking and savings accounts, loans, credit cards, investment services, and online banking.",
         "What product or service do you need help with?"
-      ]
+      ],
+      "emotion": "neutral",
+      "empathetic": false
     },
     {
       "tag": "loan_inquiries",
@@ -97,7 +143,9 @@
         "We offer various loan products including personal, home, auto, and education loans. You can apply online, visit any branch, or call our loan center at 1-800-LOAN-NOW.",
         "Current interest rates vary by loan type and credit profile. Use our online loan calculator or speak with a loan officer for personalized rates.",
         "Loan eligibility depends on income, credit score, and other factors. Start an application online for a preliminary decision or schedule a consultation with a loan specialist."
-      ]
+      ],
+      "emotion": "neutral",
+      "empathetic": false
     },
     {
       "tag": "transfers_payments",

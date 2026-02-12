@@ -2,7 +2,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import "./App.css";
-import ChatWidget from "./ChatWidget";
+import ChatWidget from "./components/ChatWidget";
 import Home from "./Home";
 import Contact from "./Contact";
 import Login from "./Login";
