@@ -14,6 +14,15 @@ class ResponseEngine {
   }
 
   /**
+   * Detect emotion from user input
+   * @param {string} text - User message
+   * @returns {Object} - Emotion data with confidence and intensity
+   */
+  detectEmotion(text) {
+    return this.emotionDetector.detectEmotion(text);
+  }
+
+  /**
    * Generate contextual response with emotion awareness
    * @param {string} userInput - User message
    * @param {Object} userData - User context (optional)
@@ -21,7 +30,7 @@ class ResponseEngine {
    */
   generateResponse(userInput, userData = {}) {
     // Detect emotion from user input
-    const emotionData = this.emotionDetector.detectEmotion(userInput);
+    const emotionData = this.detectEmotion(userInput);
 
     // Find matching intent
     const matchedIntent = this.findBestIntent(userInput);

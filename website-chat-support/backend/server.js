@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const responseGenerator = require('./chatbot/responseGenerator');
+const ragService = require('./services/ragService');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -15,17 +16,22 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../frontend/build')));
 }
 
+// Initialize RAG-based chatbot
+console.log('\n Initializing RAG-based Banking Chatbot...');
+console.log('\n Knowledge base loaded and ready for semantic search');
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ 
     status: 'OK', 
     message: 'Chat server is running',
-    services: ['basic-chat', 'emotion-detection', 'voice-chat']
+    services: ['rag-chat', 'emotion-detection', 'voice-chat'],
+    ragEnabled: true
   });
 });
 
 // =============================================
-// EMOTION-AWARE CHAT ROUTES (NEW)
+// EMOTION-AWARE CHAT ROUTES WITH RAG (NEW)
 // =============================================
 const chatRoutes = require('./routes/chat');
 app.use('/api/chat', chatRoutes);
@@ -60,6 +66,23 @@ app.post('/api/legacy-chat', (req, res) => {
   }
 });
 
+// =============================================
+// DEBUG ENDPOINT - RAG Metrics
+// =============================================
+app.post('/api/rag-metrics', (req, res) => {
+  try {
+    const { message } = req.body;
+    if (!message) {
+      return res.status(400).json({ error: 'Message required' });
+    }
+    
+    const metrics = ragService.getRetrievalMetrics(message);
+    res.json(metrics);
+  } catch (error) {
+    res.status(500).json({ error: 'Error retrieving metrics' });
+  }
+});
+
 // Serve frontend in production
 if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
@@ -69,18 +92,19 @@ if (process.env.NODE_ENV === 'production') {
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`\n🚀 Banking Chatbot Server Running`);
-  console.log(`📍 Base URL: http://localhost:${PORT}`);
-  console.log(`\n📝 Available Endpoints:`);
-  console.log(`\n   🤖 Emotion-Aware Chat (NEW):`);
-  console.log(`      POST   /api/chat              - Text chat with emotion detection`);
-  console.log(`      POST   /api/chat/voice        - Voice chat with emotion adaptation`);
+  console.log(`\n Banking Chatbot Server Running`);
+  console.log(` Base URL: http://localhost:${PORT}`);
+  console.log(`\n Available Endpoints:`);
+  console.log(`\n RAG-Powered Emotion-Aware Chat:`);
+  console.log(`      POST   /api/chat              - Text chat with emotion detection + RAG`);
+  console.log(`      POST   /api/chat/voice        - Voice chat with emotion adaptation + RAG`);
   console.log(`      GET    /api/chat/history      - Get conversation history`);
   console.log(`      POST   /api/chat/clear        - Clear conversation`);
-  console.log(`\n   🔧 Utilities:`);
+  console.log(`\n Utilities:`);
   console.log(`      GET    /api/health            - Health check`);
   console.log(`      POST   /api/legacy-chat       - Legacy endpoint (backward compatible)`);
-  console.log(`\n✅ Emotion Recognition System Active\n`);
+  console.log(`      POST   /api/rag-metrics       - RAG retrieval metrics (debug)`);
+  //console.log(`\n RAG System + Emotion Recognition Active\n`);
 });
 
 module.exports = app;
