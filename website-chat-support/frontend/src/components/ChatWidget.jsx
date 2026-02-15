@@ -80,10 +80,19 @@ function ChatWidget() {
     setIsLoading(true);
 
     try {
+      // Get the most recent user messages for context
+      const userMessages = messages
+        //.filter((msg) => msg.sender === "user")
+        .slice(-4)
+        .map((msg) => msg.text);
+
       const response = await fetch("http://localhost:5000/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userMessage })
+        body: JSON.stringify({ 
+          message: userMessage,
+          context: userMessages
+        })
       });
 
       const data = await response.json();

@@ -394,13 +394,281 @@
       ]
     },
     {
+      "tag": "faq_minimum_balance",
+      "patterns": [
+        "minimum balance",
+        "minimum required balance",
+        "balance requirement",
+        "maintain balance",
+        "min balance",
+        "balance maintenance"
+      ],
+      "responses": [
+        "Minimum balance requirements vary by account type. Most checking accounts require $500, while savings accounts require $300. Premium accounts may have higher requirements.",
+        "If your balance falls below the minimum, you may incur a monthly fee. You can waive this fee by setting up direct deposit or maintaining an electronic recurring transfer.",
+        "Contact us at 1-888-SECURE-BANK to discuss account options that fit your needs, including zero-balance accounts for select customers."
+      ],
+      "emotion": "neutral",
+      "empathetic": false
+    },
+    {
+      "tag": "faq_overdraft_protection",
+      "patterns": [
+        "overdraft",
+        "overdraft protection",
+        "overdraft fee",
+        "insufficient funds",
+        "bounce check",
+        "declined transaction"
+      ],
+      "responses": [
+        "Overdraft protection links your checking account to a savings account or credit line to prevent declined transactions. Set it up in your online banking.",
+        "If you overdraw without protection, a $35 fee applies per transaction. Overdraft protection fees are $15. Linked accounts have no additional charge.",
+        "You can opt out of overdraft coverage in your account settings, or link accounts for automatic transfers when needed."
+      ],
+      "emotion": "neutral",
+      "empathetic": false
+    },
+    {
+      "tag": "faq_wire_transfer_fee",
+      "patterns": [
+        "wire transfer fee",
+        "international wire cost",
+        "wire charges",
+        "transfer cost",
+        "how much wire transfer"
+      ],
+      "responses": [
+        "Domestic wire transfers cost $15, while international wires are $45. Rush processing is available for an additional $25.",
+        "Some accounts offer monthly free wires. Check your account features in online banking or call customer service to learn about your benefit.",
+        "Military members and premium account holders may qualify for waived wire fees. Verify your eligibility at a branch or online."
+      ],
+      "emotion": "neutral",
+      "empathetic": false
+    },
+    {
+      "tag": "faq_check_deposit",
+      "patterns": [
+        "mobile check deposit",
+        "remote deposit",
+        "deposit check",
+        "check deposit hold",
+        "deposit clear time"
+      ],
+      "responses": [
+        "With mobile check deposit, simply photograph the front and back of your check in our app. Funds are typically available within 1-2 business days.",
+        "First-time mobile deposits may take longer to clear. ATM deposits are available 24/7 at most of our locations with instant availability for most account types.",
+        "Check deposits through ATM or mobile have daily limits of $5,000 and $2,500 respectively. These reset daily."
+      ],
+      "emotion": "neutral",
+      "empathetic": false
+    },
+    {
+      "tag": "faq_debit_card",
+      "patterns": [
+        "debit card",
+        "debit card features",
+        "card benefits",
+        "card protection",
+        "debit card fraud",
+        "replace debit card"
+      ],
+      "responses": [
+        "Our debit cards include zero-liability fraud protection, purchase protection, and emergency cash access worldwide. You can also set transaction limits.",
+        "If your card is lost or stolen, call our 24/7 hotline: 1-888-SECURE-00. We'll freeze it immediately and send a replacement within 3-5 business days.",
+        "Debit card replacements cost $15, but it's free if you're replacing a damaged card we provided. Rush delivery is $25."
+      ],
+      "emotion": "neutral",
+      "empathetic": false
+    },
+    {
+      "tag": "faq_foreign_transaction",
+      "patterns": [
+        "international transaction",
+        "foreign currency",
+        "overseas purchase",
+        "foreign transaction fee",
+        "international fee",
+        "currency conversion"
+      ],
+      "responses": [
+        "International transactions incur a 2.5% foreign transaction fee plus applicable currency conversion rates. Premium accounts may have reduced fees (1%).",
+        "Use ATMs affiliated with our network abroad to avoid fees. Check our website for partner banks in your destination country.",
+        "Our travel card offers zero foreign transaction fees and competitive exchange rates. Apply online or visit a branch for details."
+      ],
+      "emotion": "neutral",
+      "empathetic": false
+    },
+    {
+      "tag": "faq_savings_goals",
+      "patterns": [
+        "savings goal",
+        "goal tracker",
+        "automatic savings",
+        "save money",
+        "high yield savings",
+        "savings account rates"
+      ],
+      "responses": [
+        "Set financial goals in your online banking and use our automated savings tools to reach them. Round-up features automatically transfer change to savings.",
+        "Our High-Yield Savings Account earns 0.45% APY with no monthly fees. Funds are FDIC insured up to $250,000.",
+        "Create dedicated savings buckets for different goals like vacation, emergency fund, or home down payment. Transfer funds automatically each payday."
+      ],
+      "emotion": "neutral",
+      "empathetic": false
+    },
+    {
+      "tag": "faq_budget_tools",
+      "patterns": [
+        "budget",
+        "budgeting tool",
+        "spending tracker",
+        "expense tracking",
+        "financial planning",
+        "manage spending"
+      ],
+      "responses": [
+        "Our free budgeting tools categorize your spending, set spending limits, and send alerts when you approach limits. Access them in your online banking.",
+        "Use our Spending Insights feature to see where your money goes. Customize categories and get recommendations to reduce spending.",
+        "Connect your SecureBank accounts to view all spending in one dashboard. Budget alerts help you stay on track with financial goals."
+      ],
+      "emotion": "neutral",
+      "empathetic": false
+    },
+    {
+      "tag": "faq_certificate_of_deposit",
+      "patterns": [
+        "certificate of deposit",
+        "cd",
+        "cd rates",
+        "cd terms",
+        "cd account",
+        "how cd works",
+        "early withdrawal"
+      ],
+      "responses": [
+        "Certificates of Deposit (CDs) offer fixed rates for locked-in periods: 3-month (0.20% APY), 1-year (0.50% APY), 5-year (1.50% APY).",
+        "Early withdrawal from a CD results in a penalty equal to 150 days of earned interest. After maturity, your CD automatically renews unless you opt out.",
+        "Our No-Penalty CD lets you withdraw without penalty after 7 days. It earns 0.30% APY—perfect for flexibility combined with better rates."
+      ],
+      "emotion": "neutral",
+      "empathetic": false
+    },
+    {
+      "tag": "faq_money_market",
+      "patterns": [
+        "money market account",
+        "money market rate",
+        "mma",
+        "money market fund",
+        "check writing"
+      ],
+      "responses": [
+        "Money Market Accounts combine features of savings and checking with competitive rates (0.40% APY). Limited check writing (6 per month) keeps fees low.",
+        "Minimum opening balance is $2,500. No monthly maintenance fees if balance stays above $1,000. Write unlimited checks online or at branches.",
+        "Withdraw up to 6 times monthly without penalty. Additional withdrawals cost $10 each. ATM and debit card access available 24/7."
+      ],
+      "emotion": "neutral",
+      "empathetic": false
+    },
+    {
+      "tag": "faq_student_account",
+      "patterns": [
+        "student account",
+        "student checking",
+        "student loan",
+        "student benefits",
+        "campus card",
+        "college account"
+      ],
+      "responses": [
+        "Our Student Checking Account has no monthly fees, no minimum balance, and no overdraft fees for qualifying students. Opens with just a student ID.",
+        "Get a free student debit card, unlimited ATM access, and mobile banking. Includes identity theft protection specific to student needs.",
+        "Transition smoothly to our regular checking at graduation. No new application needed. Student benefits continue through your grace period."
+      ],
+      "emotion": "neutral",
+      "empathetic": false
+    },
+    {
+      "tag": "faq_beneficiary",
+      "patterns": [
+        "beneficiary",
+        "add beneficiary",
+        "beneficiary designation",
+        "power of attorney",
+        "heir",
+        "legacy planning"
+      ],
+      "responses": [
+        "Designate beneficiaries for your accounts so funds transfer directly upon your passing, bypassing probate. Update them in online banking or at a branch.",
+        "You can name multiple beneficiaries and specify percentages. Review your designations annually and after major life events.",
+        "For comprehensive estate planning with power of attorney and trusts, schedule a consultation with our financial advisor team at 1-800-WEALTH."
+      ],
+      "emotion": "neutral",
+      "empathetic": false
+    },
+    {
+      "tag": "faq_business_account",
+      "patterns": [
+        "business account",
+        "business checking",
+        "business banking",
+        "merchant services",
+        "payroll",
+        "business loan"
+      ],
+      "responses": [
+        "Our Business Checking Account includes unlimited transactions, payment processing, and dedicated business support. Rates start at 0.15% APY.",
+        "We offer payroll services, merchant processing, and invoice management tools. Get all business banking services in one platform.",
+        "Business loans up to $500,000 with flexible terms. Fast approval for qualified businesses. Call our business team: 1-800-BIZ-BANK."
+      ],
+      "emotion": "neutral",
+      "empathetic": false
+    },
+    {
+      "tag": "faq_account_verification",
+      "patterns": [
+        "verify account",
+        "account verification",
+        "identity verification",
+        "kyc",
+        "know your customer",
+        "verify identity"
+      ],
+      "responses": [
+        "For security, we may verify your identity during account setup using public records and security questions. This is standard banking practice.",
+        "If account verification is required, you'll receive instructions via email or SMS. Verification typically takes 24-48 hours.",
+        "For assistance with verification, call 1-888-SECURE-BANK with your ID ready. You may also visit any branch with government-issued ID."
+      ],
+      "emotion": "neutral",
+      "empathetic": false
+    },
+    {
+      "tag": "faq_compliance_fatca",
+      "patterns": [
+        "fatca",
+        "foreign account",
+        "tax compliance",
+        "w-9",
+        "tax withholding",
+        "irs reporting"
+      ],
+      "responses": [
+        "For tax compliance, we may request Form W-9 or W-8BEN. This information determines tax treatment and IRS reporting for your accounts.",
+        "Foreign Account Tax Compliance Act (FATCA) requires reporting of certain international accounts. SecureBank is fully compliant.",
+        "If you're a U.S. person with foreign accounts, disclose all accounts. Contact our compliance team: compliance@securebank.com for questions."
+      ],
+      "emotion": "neutral",
+      "empathetic": false
+    },
+    {
       "tag": "fallback",
       "patterns": [],
       "responses": [
         "I'm not sure about that specific banking question. For detailed assistance, please call our customer service at 1-888-SECURE-BANK or visit a branch.",
         "For security and accuracy on that topic, I recommend speaking with a banking specialist. You can reach them at 1-888-SECURE-BANK.",
         "I'm still learning about all our banking services. For this inquiry, please contact our customer service team for personalized assistance.",
-        "Contact admin for advanced queries. "
+        "Contact admin for advanced queries."
       ]
     }
   ]

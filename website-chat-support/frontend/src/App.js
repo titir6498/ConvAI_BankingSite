@@ -24,14 +24,12 @@ function App() {
               <h1>SecureBank</h1>
               <span className="tagline">Trusted Banking Since 1950</span>
             </div>
-            {/*<div className="main-nav">*/}
-              <nav className="main-nav">
-                <NavLink to="/" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Home</NavLink>
-                <NavLink to="/products" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Products & Services</NavLink>
-                <NavLink to="/about" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>About Us</NavLink>
-                <NavLink to="/login" className={({ isActive }) => isActive ? "login-btn active" : "login-btn"}>Login</NavLink>
-              </nav>
-            {/*</div>*/}
+            <nav className="main-nav">
+              <NavLink to="/" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Home</NavLink>
+              <NavLink to="/products" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Products & Services</NavLink>
+              <NavLink to="/about" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>About Us</NavLink>
+              <NavLink to="/login" className={({ isActive }) => isActive ? "login-btn active" : "login-btn"}>Login</NavLink>
+            </nav>
           </div>
         </header>
 
