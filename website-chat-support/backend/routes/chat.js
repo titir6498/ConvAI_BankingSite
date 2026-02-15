@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const ResponseEngine = require("../services/responseEngine");
 const VoiceEmotionDetector = require("../services/voiceEmotionDetector");
+const ragService = require("../services/ragService");
 const intents = require("../chatbot/intents.json");
 
 // Initialize response engine with emotion awareness
@@ -10,41 +11,71 @@ const voiceEmotionDetector = new VoiceEmotionDetector();
 
 /**
  * POST /api/chat
- * Handle text-based chat messages with emotion detection
- * Detects user emotion and generates empathetic, context-aware responses
+ * Handle text-based chat messages with emotion detection, RAG, and LLM
+ * Detects user emotion, retrieves relevant context, generates responses via LLM
  */
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   try {
-    const { message, userId = "anonymous" } = req.body;
+    const { message, userId = "anonymous", context = [] } = req.body;
 
     if (!message || message.trim() === "") {
       return res.status(400).json({ error: "Message cannot be empty" });
     }
 
-    // Generate emotionally aware response
-    const result = responseEngine.generateResponse(message, { userId });
+    //console.log('Context received by bank: ', contextString);
 
+    // Build context string from last 2 interactions
+    const contextString = context && context.length > 0
+      ? `Recent conversation: ${context.join(" | ")}\n`
+      : "";
+
+    // Step 1: Detect emotion from user message
+    const emotionResult = responseEngine.detectEmotion(message);
+    const emotion = emotionResult.emotion || "neutral";
+    const emotionConfidence = emotionResult.confidence || 0.5;
+    const intensity = emotionResult.intensity || 1.0;
+
+    // Step 2: Retrieve relevant context using RAG (Retrieval-Augmented Generation)
+    const retrievedDocs = ragService.retrieveContext(message, 3);
+
+    // Step 3: Generate response using LLM with RAG context and conversation history
+    const generatedResponse = await ragService.generateResponse(
+      message,
+      retrievedDocs,
+      emotion,
+      contextString
+    );
+
+    // Step 4: Prepare final response
     res.json({
-      response: result.text,
-      emotion: result.metadata.emotion,
-      confidence: result.metadata.confidence,
-      intensity: result.metadata.intensity,
-      requiresEscalation: result.metadata.requiresEscalation,
-      suggestedActions: result.metadata.suggestedActions,
-      conversationContext: result.conversationContext
+      response: generatedResponse.text,
+      emotion: emotion,
+      confidence: emotionConfidence,
+      intensity: intensity,
+      requiresEscalation: generatedResponse.requiresEscalation,
+      suggestedActions: generatedResponse.suggestedActions,
+      source: generatedResponse.source,
+      retrievalScore: generatedResponse.confidence,
+      matchedIntent: generatedResponse.matchedIntent,
+      usedLLM: generatedResponse.usedLLM,
+      userId: userId
     });
   } catch (error) {
     console.error("Chat error:", error);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({
+      error: "Internal server error",
+      response: "I apologize for the technical difficulty. Please try again.",
+      emotion: "neutral"
+    });
   }
 });
 
 /**
  * POST /api/chat/voice
- * Handle voice-based chat with emotion detection from speech
- * Processes transcribed text and voice characteristics
+ * Handle voice-based chat with emotion detection from speech and RAG+LLM retrieval
+ * Processes transcribed text and voice characteristics with context-aware responses
  */
-router.post("/voice", (req, res) => {
+router.post("/voice", async (req, res) => {
   try {
     const { audioFrequencyData, transcribedText, userId = "anonymous" } = req.body;
 
@@ -52,26 +83,41 @@ router.post("/voice", (req, res) => {
       return res.status(400).json({ error: "Transcribed text cannot be empty" });
     }
 
-    // Generate emotionally aware response
-    const result = responseEngine.generateResponse(transcribedText, { userId });
+    // Step 1: Detect emotion from transcribed text and audio
+    const emotionResult = responseEngine.detectEmotion(transcribedText);
+    const emotion = emotionResult.emotion || "neutral";
+    const emotionConfidence = emotionResult.confidence || 0.5;
 
-    // Generate audio response parameters based on emotion
+    // Step 2: Retrieve relevant context using RAG
+    const retrievedDocs = ragService.retrieveContext(transcribedText, 3);
+
+    // Step 3: Generate response using LLM with RAG context
+    const generatedResponse = await ragService.generateResponse(
+      transcribedText,
+      retrievedDocs,
+      emotion
+    );
+
+    // Step 4: Generate audio response parameters based on emotion
     const audioResponse = voiceEmotionDetector.generateAudioResponse(
-      result.text,
-      result.metadata.emotion
+      generatedResponse.text,
+      emotion
     );
 
     res.json({
-      response: result.text,
-      emotion: result.metadata.emotion,
-      confidence: result.metadata.confidence,
+      response: generatedResponse.text,
+      emotion: emotion,
+      confidence: emotionConfidence,
       audioResponse: {
         text: audioResponse.text,
         pitch: audioResponse.speechSynthesisParams.pitch,
         rate: audioResponse.speechSynthesisParams.rate,
         volume: audioResponse.speechSynthesisParams.volume
       },
-      suggestedActions: result.metadata.suggestedActions
+      suggestedActions: generatedResponse.suggestedActions,
+      source: generatedResponse.source,
+      usedLLM: generatedResponse.usedLLM,
+      userId: userId
     });
   } catch (error) {
     console.error("Voice chat error:", error);
